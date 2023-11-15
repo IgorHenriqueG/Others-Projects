@@ -1,49 +1,44 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body {
-    background-color: #171717;
-    color: white;
-}
+/* Código feio pois fiz as pressas */
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-}
-
-.blur h1 {
-    position: absolute;
-    top: 20vh;
-    left: 40vw;
-    font-size: 50px;
-    text-transform: uppercase;
-    font-family: 'Press Start 2P', cursive;
-}
-
-
-div {
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-    width: 50vw;
     height: 100vh;
-    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.bg-text { /* Texto padrão (É necessário estar no mesmo Z-index ou inferior ao Blur) */
+    font-size: 5rem;
+    font-weight: 700;
+    color: red;
+}
+
+.blur { /* Efeito de blur */
     position: absolute;
+    height: 100vh;
     top: 0;
     left: 0;
+    border-right: 1px solid black;
+    background: rgba(255, 255, 255, 0.2); /* Coloração e alpha do blur (pode ser alterado) */
+    backdrop-filter: blur(3px); /* Blur em sí */
 
-    opacity: 0.5;
+    animation: move 10s ease-in-out infinite;
+}
 
-    backdrop-filter: blur(10px);
-    box-shadow: 10px 20px 20px grey;
-
+@keyframes move { /* Animação do efeito de blur */
+    0% {
+        width: 0vw;
+    }
+    50% {
+        width: 50vw;
+    }
+    100% {
+        width: 0vw;
+    }
 }
